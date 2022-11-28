@@ -18,14 +18,18 @@ unique(tble$MPIOPDET)
 unique(tble$pdetcat)
 
 # Selecting the main variables --------------------------------------------
-vars <- c('key', 'mortalidad', 'year1', 'Analfabetismo', 'Bajologroeducativo', 'Barrerasaserviciosparacuidad', 'Barrerasdeaccesoaserviciosd', 'Desempleodelargaduración', 'Hacinamientocrítico', 'Materialinadecuadodeparedese', 'Materialinadecuadodepisos', 'Rezagoescolar', 'Sinaccesoafuentedeaguamejo', 'Sinaseguramientoensalud', 'Trabajoinfantil', 'Trabajoinformal', 'pertenenciaétnica', 'sexo', 'pdetcat', 'Departamento', 'Municipio') 
-'Totalipm'
+vars <- c('key', 'mortalidad', 'Totalipm', 'year1', 'Analfabetismo', 'Bajologroeducativo', 'Barrerasaserviciosparacuidad', 'Barrerasdeaccesoaserviciosd', 'Desempleodelargaduración', 'Hacinamientocrítico', 'Materialinadecuadodeparedese', 'Materialinadecuadodepisos', 'Rezagoescolar', 'Sinaccesoafuentedeaguamejo', 'Sinaseguramientoensalud', 'Trabajoinfantil', 'Trabajoinformal', 'pertenenciaétnica', 'sexo', 'pdetcat', 'nombredepartamento', 'nombremunicipio') 
 sort(colnames(tble))
 
 tble <- dplyr::select(tble, all_of(vars)) # Selecionamos variables de interés
-tble <- relocate(tble, key, Departamento, Municipio, year1)
+tble <- relocate(tble, key, nombredepartamento, nombremunicipio, year1)
 head(tble, 4)
 
+# Filtramos eliminando 2022 -----------------------------------------------
+tble <- filter(tble, year1 != '2021')
+
 # Agrupacion de los datos -------------------------------------------------
+tble
+
 
 
