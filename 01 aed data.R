@@ -27,6 +27,8 @@ etnc <- tibble(pertenenciaetnica = c(1, 2, 3, 4, 5, 6), pertenenciaEtn = c('Indi
 
 # Edades ------------------------------------------------------------------
 edad <- tibble(edad = c(0:18, 19:64, 65:120), edad_class = c(rep('Niñez', length(0:18)), rep('Adultez', length(19:64)), rep('Vejez', length(65:120)) ))
+tble <- inner_join(tble, edad, by = c('edad' = 'edad'))
+tble <- relocate(tble, edad_class, .after = edad)
 
 # Agrupacion de los datos -------------------------------------------------
 indr <- tble %>% filter(year1 == '2020') %>% distinct(key, nombredepartamento, nombremunicipio, Totalipm, Analfabetismo, Bajologroeducativo, Barrerasaserviciosparacuidad, Barrerasdeaccesoaserviciosd, Desempleodelargaduración, Hacinamientocrítico, Inadecuadaeliminacióndeexcret, Inasistenciaescolar, Materialinadecuadodeparedese, Materialinadecuadodepisos, Rezagoescolar, Sinaccesoafuentedeaguamejo, Sinaseguramientoensalud, Trabajoinfantil, Trabajoinformal)
