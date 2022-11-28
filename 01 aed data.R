@@ -32,12 +32,11 @@ edad <- tibble(edad = c(0:18, 19:64, 65:120), edad_class = c(rep('Niñez', lengt
 indr <- tble %>% filter(year1 == '2020') %>% distinct(key, nombredepartamento, nombremunicipio, Totalipm, Analfabetismo, Bajologroeducativo, Barrerasaserviciosparacuidad, Barrerasdeaccesoaserviciosd, Desempleodelargaduración, Hacinamientocrítico, Inadecuadaeliminacióndeexcret, Inasistenciaescolar, Materialinadecuadodeparedese, Materialinadecuadodepisos, Rezagoescolar, Sinaccesoafuentedeaguamejo, Sinaseguramientoensalud, Trabajoinfantil, Trabajoinformal)
 indr[duplicated(indr$key),]
 
-tble %>%
+smmr <- tble %>%
   dplyr::relocate(key, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, edad, sexo, pdetcat) %>% 
   rename(codigo = key) %>% 
   group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, sexo, pdetcat) %>% 
-  dplyr::summarise(Totalipm = mean(Totalipm), Analfabetismo = mean(Analfabetismo), Bajologroeducativo = mean(Bajologroeducativo),
-                   Barrerasaserviciosparacuidad = mean(Barrerasaserviciosparacuidad), Barrerasdeaccesoaserviciosd = mean(Barrerasdeaccesoaserviciosd),
-                   )
+  dplyr::summarise(count = n()) %>% 
+  ungroup() 
 
 
