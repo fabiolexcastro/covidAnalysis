@@ -26,7 +26,7 @@ tble <- relocate(tble, key, nombredepartamento, nombremunicipio, year1)
 head(tble, 4)
 
 # Filtramos eliminando 2022 -----------------------------------------------
-tble <- filter(tble, year1 != '2021')
+tble <- filter(tble, year1 != '2022')
 
 # Agrupacion de los datos -------------------------------------------------
 tble
