@@ -34,10 +34,14 @@ tble <- relocate(tble, edad_class, .after = edad)
 indr <- tble %>% filter(year1 == '2020') %>% distinct(key, nombredepartamento, nombremunicipio, Totalipm, Analfabetismo, Bajologroeducativo, Barrerasaserviciosparacuidad, Barrerasdeaccesoaserviciosd, Desempleodelargaduración, Hacinamientocrítico, Inadecuadaeliminacióndeexcret, Inasistenciaescolar, Materialinadecuadodeparedese, Materialinadecuadodepisos, Rezagoescolar, Sinaccesoafuentedeaguamejo, Sinaseguramientoensalud, Trabajoinfantil, Trabajoinformal)
 indr[duplicated(indr$key),]
 
+# Pertenencia etnica ------------------------------------------------------
+tble <- inner_join(tble, etnc, by = c('pertenenciaétnica' = 'pertenenciaetnica'))
+tble <- relocate(tble, pertenenciaEtn, .after = pertenenciaétnica)
+
 smmr <- tble %>%
-  dplyr::relocate(key, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, edad, sexo, pdetcat) %>% 
+  dplyr::relocate(key, nombredepartamento, nombremunicipio, year1, pertenenciaEtn, edad, sexo, pdetcat) %>% 
   rename(codigo = key) %>% 
-  group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, sexo, edad_class, pdetcat) %>% 
+  group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaEtn, sexo, edad_class, pdetcat) %>% 
   dplyr::summarise(count = n()) %>% 
   ungroup() 
 
