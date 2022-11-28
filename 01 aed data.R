@@ -37,7 +37,7 @@ indr[duplicated(indr$key),]
 smmr <- tble %>%
   dplyr::relocate(key, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, edad, sexo, pdetcat) %>% 
   rename(codigo = key) %>% 
-  group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, sexo, pdetcat) %>% 
+  group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaétnica, sexo, edad_class, pdetcat) %>% 
   dplyr::summarise(count = n()) %>% 
   ungroup() 
 
