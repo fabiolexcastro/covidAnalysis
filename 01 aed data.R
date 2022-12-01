@@ -49,4 +49,4 @@ smmr <- tble %>%
 fnal <- full_join(smmr, indr, by = c('codigo' = 'key', 'nombredepartamento' = 'nombredepartamento', 'nombremunicipio' = 'nombremunicipio'))
 
 dir_create('./tble')
-write.csv(fnal, './data_v1.csv', row.names = FALSE)
+write.csv(fnal, './tble/data_v1.csv', row.names = FALSE)
