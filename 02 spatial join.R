@@ -28,3 +28,8 @@ tble_2021 %>% distinct(pertenenciaEtn, edad_class)
 # Total fallecidos --------------------------------------------------------
 ttal_2020 <- tble_2020 %>% group_by(codigo, nombredepartamento, nombremunicipio) %>% summarise(count = sum(count)) %>% ungroup()
 ttal_2021 <- tble_2021 %>% group_by(codigo, nombredepartamento, nombremunicipio) %>% summarise(count = sum(count)) %>% ungroup()
+ttal_2020 <- ttal_2020 %>% mutate(codigo = as.character(codigo))
+ttal_2021 <- ttal_2021 %>% mutate(codigo = as.character(codigo))
+
+# To make the map ---------------------------------------------------------
+shpf_2020 <- inner_join(shpf, ttal_2020, by = c('MPIO_CCNCT' = 'codigo'))
