@@ -54,3 +54,14 @@ shpf_2021 <- inner_join(shpf, ttal_2021, by = c('MPIO_CCNCT' = 'codigo'))
 dir_create('gpkg')
 st_write(shpf_2020, 'gpkg/total_mortalidad_2020.gpkg')
 st_write(shpf_2021, 'gpkg/total_mortalidad_2021.gpkg')
+
+# Making the map
+wrld <- ne_countries(scale = 50, returnclass = 'sf')
+
+g_mrt_2020 <- ggplot() + 
+  geom_sf(data = shpf_2020, aes(fill = count, col = count), lwd = 0.2)+
+  scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
+  geom_sf(data = dpts, fill = NA, col = 'white', lwd = 0.5) + 
+  coord_sf() + 
+  theme_minimal()
+
