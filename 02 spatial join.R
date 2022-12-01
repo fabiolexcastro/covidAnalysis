@@ -21,3 +21,6 @@ colnames(tble)
 tble_2020 <- filter(tble, year1 == 2020)
 tble_2021 <- filter(tble, year1 == 2021)
 
+# Categories 
+tble_2020 %>% distinct(pertenenciaEtn, edad_class)
+tble_2021 %>% distinct(pertenenciaEtn, edad_class)
