@@ -24,3 +24,7 @@ tble_2021 <- filter(tble, year1 == 2021)
 # Categories 
 tble_2020 %>% distinct(pertenenciaEtn, edad_class)
 tble_2021 %>% distinct(pertenenciaEtn, edad_class)
+
+# Total fallecidos --------------------------------------------------------
+ttal_2020 <- tble_2020 %>% group_by(codigo, nombredepartamento, nombremunicipio) %>% summarise(count = sum(count)) %>% ungroup()
+ttal_2021 <- tble_2021 %>% group_by(codigo, nombredepartamento, nombremunicipio) %>% summarise(count = sum(count)) %>% ungroup()
