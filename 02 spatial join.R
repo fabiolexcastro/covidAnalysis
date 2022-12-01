@@ -1,7 +1,7 @@
 
 # Load libraries ----------------------------------------------------------
 require(pacman)
-pacman::p_load(tidyverse, rgeos, gtools, sf, fs, haven, glue, rgeoda, rnaturalearth, rnaturalearthdata, RColorBrewer, classInt)
+pacman::p_load(tidyverse, terra, rgeos, gtools, sf, fs, haven, glue, rgeoda, rnaturalearth, rnaturalearthdata, RColorBrewer, classInt)
 
 g <- gc(reset = TRUE)
 rm(list = ls())
