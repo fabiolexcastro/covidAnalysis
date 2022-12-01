@@ -55,6 +55,11 @@ dir_create('gpkg')
 st_write(shpf_2020, 'gpkg/total_mortalidad_2020.gpkg')
 st_write(shpf_2021, 'gpkg/total_mortalidad_2021.gpkg')
 
+# Class intervals 
+clss_2020 <- classInt::classIntervals(var = pull(shpf_2020, count), n = 6, style = 'jenks')
+clss_2020 <- clss_2020$brks
+clss_2020 <- c(clss_2020[1], round(clss_2020[2:7], -1))
+
 # Making the map
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
 
