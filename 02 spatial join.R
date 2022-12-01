@@ -45,3 +45,5 @@ anti_join(ttal_2020, shpf_2020, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(nombre
 ttal_2020 %>% filter(nombredepartamento == 'ANTIOQUIA')
 shpf %>% filter(DPTO_CNMBR == 'ANTIOQUIA')
 
+ttal_2020 %>% filter(nombredepartamento == 'ATLANTICO')
+shpf %>% filter(DPTO_CNMBR == 'ATLÁNTICO')
