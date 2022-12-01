@@ -45,4 +45,7 @@ smmr <- tble %>%
   dplyr::summarise(count = n()) %>% 
   ungroup() 
 
+# To join both tables into only one ---------------------------------------
+fnal <- full_join(smmr, indr, by = c('codigo' = 'key', 'nombredepartamento' = 'nombredepartamento', 'nombremunicipio' = 'nombremunicipio'))
+
 
