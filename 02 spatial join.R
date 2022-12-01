@@ -60,6 +60,8 @@ clss_2020 <- classInt::classIntervals(var = pull(shpf_2020, count), n = 6, style
 clss_2020 <- clss_2020$brks
 clss_2020 <- c(clss_2020[1], round(clss_2020[2:7], -1))
 
+shpf_2020 <- mutate(shpf_2020, count_class = findInterval(x = count, vec = clss_2020, all.inside = T)) 
+
 # Making the map
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
 
