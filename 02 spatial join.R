@@ -33,5 +33,5 @@ ttal_2021 <- ttal_2021 %>% mutate(codigo = as.character(codigo))
 
 # To make the map ---------------------------------------------------------
 shpf_2020 <- inner_join(shpf, ttal_2020, by = c('MPIO_CCNCT' = 'codigo'))
-anti_join(ttal_2020, shpf_2020, by = c('codigo' = 'MPIO_CCNCT'))
+anti_join(ttal_2020, shpf_2020, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(nombredepartamento)
 
