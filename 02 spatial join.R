@@ -61,6 +61,10 @@ clss_2020 <- clss_2020$brks
 clss_2020 <- c(clss_2020[1], round(clss_2020[2:7], -1))
 
 shpf_2020 <- mutate(shpf_2020, count_class = findInterval(x = count, vec = clss_2020, all.inside = T)) 
+clss_2020 <- tibble(value = 1:6, inf = clss_2020[1:6], sup = clss_2020[2:7], interval = glue('{inf}-{sup}'))
+shpf_2020 <- inner_join(shpf_2020, clss_2020, by = c('count_class' = 'value'))
+shpf_2020 <- mutate(shpf_2020, interval = factor(interval, levels = clss_2020$interval))
+glimpse(shpf_2020)
 
 # Making the map
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
