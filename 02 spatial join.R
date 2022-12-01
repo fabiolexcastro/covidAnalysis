@@ -61,9 +61,12 @@ wrld <- ne_countries(scale = 50, returnclass = 'sf')
 g_mrt_2020 <- ggplot() + 
   geom_sf(data = shpf_2020, aes(fill = count, col = count), lwd = 0.2)+
   scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
+  scale_color_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd'), guide = 'none') +
   geom_sf(data = dpts, fill = NA, col = 'white', lwd = 0.5) + 
   coord_sf() + 
   theme_minimal()
 
 dir_create('./png/maps')
 ggsave(plot = g_mrt_2020, filename = './png/maps/mort_2020.png', units = 'in', width = 7, height = 9, dpi = 300)
+
+
