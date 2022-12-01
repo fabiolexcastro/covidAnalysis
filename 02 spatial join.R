@@ -69,7 +69,6 @@ glimpse(shpf_2020)
 # Making the map
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
 
-# 2020 map
 g_mrt_2020 <- ggplot() + 
   geom_sf(data = shpf_2020, aes(fill = interval, col = interval), lwd = 0.2)+
   scale_fill_manual(values = brewer.pal(n = 6, name = 'YlOrRd')) +
@@ -78,12 +77,13 @@ g_mrt_2020 <- ggplot() +
   geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Mortalidad por COVID-19 en Colombia - Año 2020') + 
-  labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020') +
+  labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020', fill = 'Cantidad fallecidos') +
   theme_minimal() + 
   theme(axis.text.x = element_text(family = 'serif'), 
         axis.text.y = element_text(family = 'serif'), 
         axis.title.x = element_text(family = 'serif'), 
         axis.title.y = element_text(family = 'serif'), 
+        plot.title = element_text(family = 'serif', hjust = 0.5, face = 'bold'),
         legend.position = 'bottom', 
         legend.title = element_text(face = 'bold', family = 'serif'), 
         legend.text = element_text(family = 'serif'))
