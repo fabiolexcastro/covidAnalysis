@@ -74,7 +74,7 @@ g_mrt_2020 <- ggplot() +
   geom_sf(data = shpf_2020, aes(fill = interval, col = interval), lwd = 0.2)+
   scale_fill_manual(values = brewer.pal(n = 6, name = 'YlOrRd')) +
   scale_color_manual(values = brewer.pal(n = 6, name = 'YlOrRd'), guide = 'none') +
-  geom_sf(data = dpts, fill = NA, col = 'white', lwd = 0.5) + 
+  geom_sf(data = dpts, fill = NA, col = 'grey60', lwd = 0.5) + 
   geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Mortalidad por COVID-19 en Colombia - Año 2020') + 
@@ -90,7 +90,4 @@ g_mrt_2020 <- ggplot() +
 
 dir_create('./png/maps')
 ggsave(plot = g_mrt_2020, filename = './png/maps/mort_2020.png', units = 'in', width = 7, height = 9, dpi = 300)
-
-0)
-
 
