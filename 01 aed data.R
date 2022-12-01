@@ -38,9 +38,14 @@ indr[duplicated(indr$key),]
 tble <- inner_join(tble, etnc, by = c('pertenenciaétnica' = 'pertenenciaetnica'))
 tble <- relocate(tble, pertenenciaEtn, .after = pertenenciaétnica)
 
+colnames(tble)
+tble %>% dplyr::select(mortalidad) %>% pull() %>% table()
+tble %>% filter(estado1 == 'Fa')
+
 smmr <- tble %>%
   dplyr::relocate(key, nombredepartamento, nombremunicipio, year1, pertenenciaEtn, edad, sexo, pdetcat) %>% 
   rename(codigo = key) %>% 
+  filter(mortalidad == '1') %>% 
   group_by(codigo, nombredepartamento, nombremunicipio, year1, pertenenciaEtn, sexo, edad_class, pdetcat) %>% 
   dplyr::summarise(count = n()) %>% 
   ungroup() 
