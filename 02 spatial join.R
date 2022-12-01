@@ -46,8 +46,3 @@ shpf <- rbind(shpf %>% filter(DPTO_CNMBR != 'ATLÁNTICO'),
 shpf_2020 <- inner_join(shpf, ttal_2020, by = c('MPIO_CCNCT' = 'codigo'))
 anti_join(ttal_2020, shpf_2020, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(nombredepartamento)
 
-ttal_2020 %>% filter(nombredepartamento == 'ANTIOQUIA')
-shpf %>% filter(DPTO_CNMBR == 'ANTIOQUIA')
-
-ttal_2020 %>% filter(nombredepartamento == 'ATLANTICO')
-shpf %>% filter(DPTO_CNMBR == 'ATLÁNTICO')
