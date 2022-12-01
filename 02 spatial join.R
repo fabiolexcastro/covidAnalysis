@@ -31,6 +31,13 @@ ttal_2021 <- tble_2021 %>% group_by(codigo, nombredepartamento, nombremunicipio)
 ttal_2020 <- ttal_2020 %>% mutate(codigo = as.character(codigo))
 ttal_2021 <- ttal_2021 %>% mutate(codigo = as.character(codigo))
 
+# Tidy shapefile ----------------------------------------------------------
+
+# Antioquia
+shpf <- rbind(shpf %>% filter(DPTO_CNMBR != 'ANTIOQUIA'), 
+              shpf %>% filter(DPTO_CNMBR == 'ANTIOQUIA') %>% mutate(MPIO_CCNCT = gsub('^0', '', MPIO_CCNCT)))
+
+
 # To make the map ---------------------------------------------------------
 shpf_2020 <- inner_join(shpf, ttal_2020, by = c('MPIO_CCNCT' = 'codigo'))
 anti_join(ttal_2020, shpf_2020, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(nombredepartamento)
