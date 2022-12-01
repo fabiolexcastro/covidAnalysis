@@ -10,3 +10,4 @@ options(scipen = 999, warn = -1)
 # Load data ---------------------------------------------------------------
 tble <- read_csv('./tble/data_v1.csv')
 head(tble)
+shpf <- st_read('./SHP/MGN2018_MPIO_POLITICO/MGN_MPIO_POLITICO.shp')
