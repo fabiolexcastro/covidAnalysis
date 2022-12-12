@@ -58,5 +58,5 @@ zomc_tble <- zomc %>%
   st_drop_geometry() %>% 
   dplyr::select(ID_ESPA) %>%
   as_tibble() %>% 
-  mutate(tipo_mpio = 'PDET')
+  mutate(tipo_mpio = 'ZOMAC')
 
