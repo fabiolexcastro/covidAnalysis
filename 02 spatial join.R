@@ -91,3 +91,12 @@ g_mrt_2020 <- ggplot() +
 dir_create('./png/maps')
 ggsave(plot = g_mrt_2020, filename = './png/maps/mort_2020.png', units = 'in', width = 7, height = 9, dpi = 300)
 
+# 2021 -------------------------------------------------
+# Class intervals
+clss_2021 <- clss_2020
+summary(shpf_2021$count)
+
+
+
+
+summary(shpf_2021$count)
