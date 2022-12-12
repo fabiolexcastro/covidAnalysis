@@ -96,7 +96,10 @@ ggsave(plot = g_mrt_2020, filename = './png/maps/mort_2020.png', units = 'in', w
 clss_2021 <- clss_2020
 summary(shpf_2021$count)
 
+shpf_2021 <- mutate(shpf_2021, count_class = findInterval(x = count, vec = clss_2021, all.inside = T)) 
+clss_2021 <- tibble(value = 1:6, inf = clss_2021[1:6], sup = clss_2021[2:7], interval = glue('{inf}-{sup}'))
+shpf_2021 <- inner_join(shpf_2021, clss_2021, by = c('count_class' = 'value'))
+shpf_2021 <- mutate(shpf_2021, interval = factor(interval, levels = clss_2021$interval))
 
-
-
-summary(shpf_2021$count)
+head(shpf_2021)
+table(shpf_2021$interval)
