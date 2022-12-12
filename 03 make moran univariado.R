@@ -11,6 +11,8 @@ options(scipen = 999, warn = -1)
 s_20 <- st_read('gpkg/total_mortalidad_2020.gpkg')
 s_21 <- st_read('gpkg/total_mortalidad_2021.gpkg')
 
+dpts <- st_read('./SHP/MGN2018_DPTO_POLITICO/MGN_DPTO_POLITICO.shp')
+
 # To calculate the weigths ------------------------------------------------
 q_20 <- queen_weights(s_20, order = 1, precision_threshold = 0.10)
 q_21 <- queen_weights(s_21, order = 1, precision_threshold = 0.10)
