@@ -38,6 +38,8 @@ lbls <- mutate(lbls, clase = c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'B
 s_20 <- inner_join(s_20, lbls, by = 'cluster_num')
 names(mran_clrs) <- c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'Bajo-Alto', 'Alto-Bajo', 'Indefinido', 'Aislados')
 
+mrn_2020 <- mean(m_20$lisa_vals)
+
 # To make the map 2020
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
 g_mrn_2020 <- ggplot() + 
