@@ -48,4 +48,15 @@ write.xlsx(as.data.frame(count_2021), file = 'tble/results/countMoran_gral_univa
 pdet <- st_read('SHP/pdet.shp')
 zomc <- st_read('SHP/zomac.shp')
 
+pdet_tble <- pdet %>% 
+  st_drop_geometry() %>% 
+  dplyr::select(ID_ESPA) %>%
+  as_tibble() %>% 
+  mutate(tipo_mpio = 'PDET')
+
+zomc_tble <- zomc %>% 
+  st_drop_geometry() %>% 
+  dplyr::select(ID_ESPA) %>%
+  as_tibble() %>% 
+  mutate(tipo_mpio = 'PDET')
 
