@@ -105,4 +105,12 @@ g_mrn_2021 <- ggplot() +
 ggsave(plot = g_mrn_2021, filename = './png/maps/morn_2021.png', units = 'in', width = 7, height = 9, dpi = 300)
 
 
+# To make the gif ---------------------------------------------------------
+library(magick)
+imgs <- c('png/maps/morn_2020.png', 'png/maps/morn_2021.png')
+imgs <- map(imgs, image_read)
+jnds <- image_join(imgs)
+anmd <- magick::image_animate(jnds, fps = 1)
+dir_create('gif')
+image_write(image = anmd, path = 'gif/gif_moran_fallecidos.gif')
 
