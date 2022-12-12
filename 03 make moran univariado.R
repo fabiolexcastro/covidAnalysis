@@ -19,3 +19,11 @@ q_21 <- queen_weights(s_21, order = 1)
 m_20 <- local_moran(q_20, st_drop_geometry(s_20['count']))
 mran_lbls <- lisa_labels(m_20)
 mran_clrs <- setNames(lisa_colors(m_20), mran_lbls)
+
+s_20 <- mutate(s_20, cluster_num = lisa_clusters(m_20) + 1,
+                     cluster = factor(mran_lbls[cluster_num], levels = mran_lbls))
+
+ggplot(s_20, aes(fill = cluster)) +
+  geom_sf(color = "white", size = 0) +
+  scale_fill_manual(values = mran_clrs, na.value = "green") +
+  theme_dark()
