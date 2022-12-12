@@ -31,3 +31,7 @@ ggplot(s_20, aes(fill = cluster)) +
 # Labels (spanish)
 lbls <- s_20 %>% st_drop_geometry() %>% distinct(cluster_num, cluster) %>% arrange(cluster_num)
 lbls <- mutate(lbls, clase = c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'Bajo-Alto', 'Alto-Bajo', 'Isolados'))
+
+# Join labels
+s_20 <- inner_join(s_20, lbls, by = 'cluster_num')
+
