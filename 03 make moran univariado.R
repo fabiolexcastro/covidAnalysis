@@ -27,3 +27,7 @@ ggplot(s_20, aes(fill = cluster)) +
   geom_sf(color = "white", size = 0) +
   scale_fill_manual(values = mran_clrs, na.value = "green") +
   theme_dark()
+
+# Labels (spanish)
+lbls <- s_20 %>% st_drop_geometry() %>% distinct(cluster_num, cluster) %>% arrange(cluster_num)
+lbls <- mutate(lbls, clase = c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'Bajo-Alto', 'Alto-Bajo', 'Isolados'))
