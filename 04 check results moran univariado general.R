@@ -36,5 +36,12 @@ makeCount <- function(shpf, year){
   
 }
 
+count_2020 <- makeCount(shpf = m_20, year = 2020)
+count_2021 <- makeCount(shpf = m_21, year = 2021)
+
+library(xlsx)
+dir_create('tble/results')
+write.xlsx(as.data.frame(count_2020), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2020', row.names = FALSE)
+write.xlsx(as.data.frame(count_2021), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2021', append = TRUE, row.names = FALSE)
 
 
