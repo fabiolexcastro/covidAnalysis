@@ -44,4 +44,8 @@ dir_create('tble/results')
 write.xlsx(as.data.frame(count_2020), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2020', row.names = FALSE)
 write.xlsx(as.data.frame(count_2021), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2021', append = TRUE, row.names = FALSE)
 
+# Read pdet and zomac -----------------------------------------------------
+pdet <- st_read('SHP/pdet.shp')
+zomc <- st_read('SHP/zomac.shp')
+
 
