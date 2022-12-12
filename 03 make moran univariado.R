@@ -34,4 +34,5 @@ lbls <- mutate(lbls, clase = c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'B
 
 # Join labels
 s_20 <- inner_join(s_20, lbls, by = 'cluster_num')
+names(mran_clrs) <- c('Sin significancia', 'Alto-Alto', 'Bajo-Bajo', 'Bajo-Alto', 'Alto-Bajo', 'Indefinido', 'Aislados')
 
