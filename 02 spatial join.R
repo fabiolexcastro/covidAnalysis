@@ -95,6 +95,7 @@ ggsave(plot = g_mrt_2020, filename = './png/maps/mort_2020.png', units = 'in', w
 # Class intervals
 clss_2021 <- clss_2020
 summary(shpf_2021$count)
+clss_2021[7] <- 16700
 
 shpf_2021 <- mutate(shpf_2021, count_class = findInterval(x = count, vec = clss_2021, all.inside = T)) 
 clss_2021 <- tibble(value = 1:6, inf = clss_2021[1:6], sup = clss_2021[2:7], interval = glue('{inf}-{sup}'))
