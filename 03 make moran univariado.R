@@ -15,4 +15,7 @@ s_21 <- st_read('gpkg/total_mortalidad_2021.gpkg')
 q_20 <- queen_weights(s_20, order = 1)
 q_21 <- queen_weights(s_21, order = 1)
 
-
+# Moran 2020 --------------------------------------------------------------
+m_20 <- local_moran(q_20, st_drop_geometry(s_20['count']))
+mran_lbls <- lisa_labels(m_20)
+mran_clrs <- setNames(lisa_colors(m_20), mran_lbls)
