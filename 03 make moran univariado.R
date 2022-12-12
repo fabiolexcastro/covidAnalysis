@@ -12,8 +12,8 @@ s_20 <- st_read('gpkg/total_mortalidad_2020.gpkg')
 s_21 <- st_read('gpkg/total_mortalidad_2021.gpkg')
 
 # To calculate the weigths ------------------------------------------------
-q_20 <- queen_weights(s_20, order = 1)
-q_21 <- queen_weights(s_21, order = 1)
+q_20 <- queen_weights(s_20, order = 1, precision_threshold = 0.10)
+q_21 <- queen_weights(s_21, order = 1, precision_threshold = 0.10)
 
 # Moran 2020 --------------------------------------------------------------
 m_20 <- local_moran(q_20, st_drop_geometry(s_20['count']))
