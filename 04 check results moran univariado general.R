@@ -12,5 +12,15 @@ options(scipen = 999, warn = -1)
 m_20 <- st_read('gpkg/moran_fallecidosGral_2020.gpkg')
 m_21 <- st_read('gpkg/moran_fallecidosGral_2021.gpkg')
 
+# Make the count ----------------------------------------------------------
+makeCount <- function(shpf){
+  
+  shpf <- m_20 # Proof
+  freq <- as.data.frame(table(shpf$clase))
+  colnames(freq) <- c('categoria', 'cantidad_municipios')
+  freq <- freq %>% arrange(desc(cantidad_municipios))
+  
+  
+}
 
 
