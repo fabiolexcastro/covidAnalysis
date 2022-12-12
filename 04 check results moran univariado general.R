@@ -13,10 +13,11 @@ m_20 <- st_read('gpkg/moran_fallecidosGral_2020.gpkg')
 m_21 <- st_read('gpkg/moran_fallecidosGral_2021.gpkg')
 
 # Make the count ----------------------------------------------------------
+# Make the count ----------------------------------------------------------
 makeCount <- function(shpf, year){
   
-  shpf <- m_20 # Proof
-  year <- 2020
+  # shpf <- m_20 # Proof
+  # year <- 2020
   
   freq <- as.data.frame(table(shpf$clase))
   colnames(freq) <- c('categoria', 'cantidad_municipios')
@@ -30,12 +31,10 @@ makeCount <- function(shpf, year){
     arrange(clase) %>% 
     mutate(anio = year)
   
-  View(mpos)
-  
-  
+  cat('Done!\n')
+  return(mpos)
   
 }
-
 
 
 
