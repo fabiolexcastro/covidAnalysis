@@ -52,7 +52,7 @@ g_mrn_2020 <- ggplot() +
   new_scale_fill() + 
   new_scale_color() +
   geom_sf(data = m_20_zm, aes(col = Tipo), fill = NA, lwd = 0.6) +
-  scale_color_manual(values = c('#C9D3B4', '#70687A', '#CDDD57'), name = 'Tipo') +
+  scale_color_manual(values = c('#726BDC', '#C05881', '#97DE30'), name = 'Tipo') +
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Análisis LISA para fallecidos por COVID-19 en el año 2020') + 
   labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020', fill = 'Categoria') +
@@ -80,7 +80,7 @@ g_mrn_2021 <- ggplot() +
   new_scale_fill() + 
   new_scale_color() +
   geom_sf(data = m_21_zm, aes(col = Tipo), fill = NA, lwd = 0.6) +
-  scale_color_manual(values = c('#C9D3B4', '#70687A', '#CDDD57'), name = 'Tipo') +
+  scale_color_manual(values = c('#726BDC', '#C05881', '#97DE30'), name = 'Tipo') +
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Análisis LISA para fallecidos por COVID-19 en el año 2021') + 
   labs(x = 'Lon', y = 'Lat', caption = 'INS - 2021', fill = 'Categoria') +
