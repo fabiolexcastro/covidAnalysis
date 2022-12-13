@@ -26,6 +26,7 @@ m_21 <- left_join(m_21, zmpd, by = c('MPIO_CCNCT' = 'id_espa'))
 m_20_zm <- filter(m_20, !is.na(zomac_pdet))
 m_20_zm <- filter(m_20_zm, clase != 'Sin significancia')
 m_20_zm <- dplyr::rename(m_20_zm, Tipo = zomac_pdet)
+m_20_zm <- mutate(m_20_zm, Tipo = factor(Tipo, levels = c('ZOMAC', 'PDET', 'PDET-ZOMAC')))
 
 # -------------------------------------------------------------------------
 # To make the map ---------------------------------------------------------
@@ -45,6 +46,7 @@ g_mrn_2020 <- ggplot() +
   new_scale_fill() + 
   new_scale_color() +
   geom_sf(data = m_20_zm, aes(col = Tipo), fill = NA, lwd = 0.6) +
+  scale_color_manual(values = c('#C9D3B4', '#70687A', '#CDDD57')) +
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Análisis LISA para fallecidos por COVID-19 en el año 2020') + 
   labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020', fill = 'Categoria') +
