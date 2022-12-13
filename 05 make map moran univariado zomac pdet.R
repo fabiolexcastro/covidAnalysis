@@ -39,14 +39,14 @@ names(mran_clrs) <- clrs$clase
 
 g_mrn_2020 <- ggplot() + 
   geom_sf(data = m_20, aes(fill = clase, col = clase), lwd = 0.2)+
-  scale_fill_manual(values = mran_clrs) +
+  scale_fill_manual(values = mran_clrs, name = 'Clase') +
   scale_color_manual(values = mran_clrs, guide = 'none') +
   geom_sf(data = dpts, fill = NA, col = 'grey60', lwd = 0.5) + 
   geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
   new_scale_fill() + 
   new_scale_color() +
   geom_sf(data = m_20_zm, aes(col = Tipo), fill = NA, lwd = 0.6) +
-  scale_color_manual(values = c('#C9D3B4', '#70687A', '#CDDD57')) +
+  scale_color_manual(values = c('#C9D3B4', '#70687A', '#CDDD57'), name = 'Tipo') +
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Análisis LISA para fallecidos por COVID-19 en el año 2020') + 
   labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020', fill = 'Categoria') +
@@ -58,6 +58,8 @@ g_mrn_2020 <- ggplot() +
         plot.title = element_text(family = 'serif', hjust = 0.5, face = 'bold'),
         legend.position = 'bottom', 
         legend.title = element_text(face = 'bold', family = 'serif'), 
-        legend.text = element_text(family = 'serif'))
+        legend.text = element_text(family = 'serif')) +
+  guides(color=guide_legend(nrow = 2, byrow = TRUE))
 
 ggsave(plot = g_mrn_2020, filename = './png/maps/mapa_test.png', units = 'in', width = 7, height = 9, dpi = 300)
+
