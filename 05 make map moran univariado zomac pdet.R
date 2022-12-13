@@ -61,5 +61,5 @@ g_mrn_2020 <- ggplot() +
         legend.text = element_text(family = 'serif')) +
   guides(color=guide_legend(nrow = 2, byrow = TRUE))
 
-ggsave(plot = g_mrn_2020, filename = './png/maps/mapa_test.png', units = 'in', width = 7, height = 9, dpi = 300)
+ggsave(plot = g_mrn_2020, filename = './png/maps/morn_2020_zomacpdet.png', units = 'in', width = 7, height = 9, dpi = 300)
 
