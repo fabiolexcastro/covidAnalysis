@@ -69,6 +69,4 @@ pdet_zomc <- mutate(pdet_zomc, zomac_pdet = gsub('NA-ZOMAC', 'ZOMAC', zomac_pdet
 pdet_zomc <- dplyr::select(pdet_zomc, id_espa, zomac_pdet)
 
 # Join with the main table ------------------------------------------------
-count_2020
-count_2020 <- inner_join(count_2020, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
-
+count_2020 <- left_join(count_2020, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
