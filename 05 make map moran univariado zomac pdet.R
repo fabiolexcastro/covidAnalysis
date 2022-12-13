@@ -42,7 +42,7 @@ g_mrn_2020 <- ggplot() +
   geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
   new_scale_fill() + 
   new_scale_color() +
-  geom_sf(data = m_20_zm, aes(col = zomac_pdet), lwd = 0.6) +
+  geom_sf(data = m_20_zm, aes(col = zomac_pdet), fill = NA, lwd = 0.6) +
   coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
   ggtitle(label = 'Análisis LISA para fallecidos por COVID-19 en el año 2020') + 
   labs(x = 'Lon', y = 'Lat', caption = 'INS - 2020', fill = 'Categoria') +
