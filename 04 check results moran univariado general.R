@@ -69,9 +69,19 @@ pdet_zomc <- mutate(pdet_zomc, zomac_pdet = gsub('NA-ZOMAC', 'ZOMAC', zomac_pdet
 pdet_zomc <- dplyr::select(pdet_zomc, id_espa, zomac_pdet)
 
 # Join with the main table ------------------------------------------------
+
+# 2020
 count_2020 <- left_join(count_2020, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 count_2020_zomac_pdet <- filter(count_2020, !is.na(zomac_pdet))
 count_2020_zomac_pdet
 
 count_2020_zomac_pdet_tble <- as.data.frame(table(count_2020_zomac_pdet$zomac_pdet)) %>% setNames(c('Category', 'Frecuencia_Mpios'))
 count_2020_zomac_pdet_tble
+
+# 2021
+count_2021 <- left_join(count_2021, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
+count_2021_zomac_pdet <- filter(count_2021, !is.na(zomac_pdet))
+count_2021_zomac_pdet
+count_2021_zomac_pdet_tble <- as.data.frame(table(count_2021_zomac_pdet$zomac_pdet)) %>% setNames(c('Category', 'Frecuencia_Mpios'))
+count_2021_zomac_pdet_tble
+
