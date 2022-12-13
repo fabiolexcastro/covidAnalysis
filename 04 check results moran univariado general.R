@@ -60,3 +60,8 @@ zomc_tble <- zomc %>%
   mutate(tipo_mpio = 'ZOMAC')
 
 pdet_zomc <- full_join(pdet_tble, zomc_tble, by = 'ID_ESPA') %>% setNames(c('id_espa', 'typo_x', 'typo_y'))
+
+# Join with the main table ------------------------------------------------
+count_2020
+count_2020 <- inner_join(count_2020, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
+
