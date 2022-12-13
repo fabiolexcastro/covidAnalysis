@@ -73,4 +73,5 @@ count_2020 <- left_join(count_2020, pdet_zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 count_2020_zomac_pdet <- filter(count_2020, !is.na(zomac_pdet))
 count_2020_zomac_pdet
 
-
+count_2020_zomac_pdet_tble <- as.data.frame(table(count_2020_zomac_pdet$zomac_pdet)) %>% setNames(c('Category', 'Frecuencia_Mpios'))
+count_2020_zomac_pdet_tble
