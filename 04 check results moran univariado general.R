@@ -85,3 +85,8 @@ count_2021_zomac_pdet
 count_2021_zomac_pdet_tble <- as.data.frame(table(count_2021_zomac_pdet$zomac_pdet)) %>% setNames(c('Category', 'Frecuencia_Mpios'))
 count_2021_zomac_pdet_tble
 
+# Main table
+out <- 'tble/results'
+write.xlsx(as.data.frame(count_2020), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2020', row.names = FALSE)
+write.xlsx(as.data.frame(count_2021), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2021', append = TRUE, row.names = FALSE)
+
