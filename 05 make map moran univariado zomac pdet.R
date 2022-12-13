@@ -28,6 +28,12 @@ m_20_zm <- filter(m_20_zm, clase != 'Sin significancia')
 m_20_zm <- dplyr::rename(m_20_zm, Tipo = zomac_pdet)
 m_20_zm <- mutate(m_20_zm, Tipo = factor(Tipo, levels = c('ZOMAC', 'PDET', 'PDET-ZOMAC')))
 
+m_21_zm <- filter(m_21, !is.na(zomac_pdet))
+m_21_zm <- filter(m_21_zm, clase != 'Sin significancia')
+m_21_zm <- dplyr::rename(m_21_zm, Tipo = zomac_pdet)
+m_21_zm <- mutate(m_21_zm, Tipo = factor(Tipo, levels = c('ZOMAC', 'PDET', 'PDET-ZOMAC')))
+
+
 # -------------------------------------------------------------------------
 # To make the map ---------------------------------------------------------
 # -------------------------------------------------------------------------
