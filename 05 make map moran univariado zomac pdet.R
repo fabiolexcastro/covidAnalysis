@@ -23,6 +23,8 @@ dpts <- st_read('./SHP/MGN2018_DPTO_POLITICO/MGN_DPTO_POLITICO.shp')
 m_20 <- left_join(m_20, zmpd, by = c('MPIO_CCNCT' = 'id_espa')) 
 m_21 <- left_join(m_21, zmpd, by = c('MPIO_CCNCT' = 'id_espa')) 
 
+m_20_zm <- filter(m_20, !is.na(zomac_pdet))
+
 # -------------------------------------------------------------------------
 # To make the map ---------------------------------------------------------
 # -------------------------------------------------------------------------
