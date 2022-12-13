@@ -90,3 +90,7 @@ out <- 'tble/results'
 write.xlsx(as.data.frame(count_2020), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2020', row.names = FALSE)
 write.xlsx(as.data.frame(count_2021), file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'y2021', append = TRUE, row.names = FALSE)
 
+# Summary table (count)
+write.xlsx(count_2020_zomac_pdet_tble, file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'smmrZM_PD_20', append = TRUE, row.names = FALSE)
+write.xlsx(count_2021_zomac_pdet_tble, file = 'tble/results/countMoran_gral_univariado.xlsx', sheetName = 'smmrZM_PD_21', append = TRUE, row.names = FALSE)
+
