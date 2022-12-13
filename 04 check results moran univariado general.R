@@ -68,6 +68,8 @@ pdet_zomc <- mutate(pdet_zomc, zomac_pdet = gsub('PDET-NA', 'PDET', zomac_pdet))
 pdet_zomc <- mutate(pdet_zomc, zomac_pdet = gsub('NA-ZOMAC', 'ZOMAC', zomac_pdet))
 pdet_zomc <- dplyr::select(pdet_zomc, id_espa, zomac_pdet)
 
+write.csv(pdet_zomc, 'tble/zomac_pdet.csv', row.names = FALSE)
+
 # Join with the main table ------------------------------------------------
 
 # 2020
