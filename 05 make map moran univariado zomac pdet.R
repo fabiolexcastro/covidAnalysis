@@ -15,6 +15,10 @@ zmpd <- mutate(zmpd, id_espa = as.character(id_espa))
 
 clrs <- read_csv('tble/colors_moran.csv')
 
+# Administrative data
+wrld <- ne_countries(scale = 50, returnclass = 'sf')
+dpts <- st_read('./SHP/MGN2018_DPTO_POLITICO/MGN_DPTO_POLITICO.shp')
+
 # To make the join --------------------------------------------------------
 m_20 <- left_join(m_20, zmpd, by = c('MPIO_CCNCT' = 'id_espa')) 
 m_21 <- left_join(m_21, zmpd, by = c('MPIO_CCNCT' = 'id_espa')) 
