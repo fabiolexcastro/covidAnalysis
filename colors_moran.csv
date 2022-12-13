@@ -1,0 +1,7 @@
+"cluster_num","cluster","clase","color"
+1,"Not significant","Sin significancia","#eeeeee"
+2,"High-High","Alto-Alto","#FF0000"
+3,"Low-Low","Bajo-Bajo","#0000FF"
+4,"Low-High","Bajo-Alto","#a7adf9"
+5,"High-Low","Alto-Bajo","#f4ada8"
+7,"Isolated","Aislados","#999999"
