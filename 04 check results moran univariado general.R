@@ -64,7 +64,8 @@ pdet_zomc <- mutate(pdet_zomc, id_espa = as.character(id_espa))
 pdet_zomc <- mutate(pdet_zomc, zomac_pdet = paste0(typo_x, '-', typo_y))
 head(pdet_zomc)
 unique(pdet_zomc$zomac_pdet)
-
+pdet_zomc <- mutate(pdet_zomc, zomac_pdet = gsub('PDET-NA', 'PDET', zomac_pdet))
+unique(pdet_zomc$zomac_pdet)
 
 # Join with the main table ------------------------------------------------
 count_2020
