@@ -10,5 +10,11 @@ options(scipen = 999, warn = -1)
 
 # Load data ---------------------------------------------------------------
 tble <- read_csv('tble/data_v1.csv')
+colnames(tble)
+dplyr::select(tble, Totalipm)
+hist(tble$Totalipm)
+
+# To make the group by (mpio) ---------------------------------------------
+
 
 
