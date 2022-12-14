@@ -64,3 +64,7 @@ shpf <- rbind(shpf %>% filter(DPTO_CNMBR != 'ATLÁNTICO'),
 shpf_lipm <- inner_join(shpf, lipm, by = c('MPIO_CCNCT' = 'codigo'))
 anti_join(lipm, shpf_lipm, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(codigo)
 pull(lipm, codigo)
+
+# Read shapes
+wrld <- ne_countries(scale = 50, returnclass = 'sf')
+dpts <- st_read('./SHP/MGN2018_DPTO_POLITICO/MGN_DPTO_POLITICO.shp')
