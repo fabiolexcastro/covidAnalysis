@@ -68,3 +68,24 @@ pull(lipm, codigo)
 # Read shapes
 wrld <- ne_countries(scale = 50, returnclass = 'sf')
 dpts <- st_read('./SHP/MGN2018_DPTO_POLITICO/MGN_DPTO_POLITICO.shp')
+
+gm_tl <- ggplot() + 
+  geom_sf(data = shpf_lipm, aes(fill = Totalipm, col = Totalipm)) +
+  scale_fill_gradientn(colors = brewer.pal(n = 9, name = 'YlOrRd')) +
+  scale_color_gradientn(colors =  brewer.pal(n = 9, name = 'YlOrRd'), guide = 'none') +
+  geom_sf(data = dpts, fill = NA, col = 'grey60', lwd = 0.5) + 
+  geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
+  coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
+  ggtitle(label = 'Índice de pobreza Multidimensional') + 
+  labs(x = 'Lon', y = 'Lat', caption = 'DANE', fill = 'Categoria') +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(family = 'serif'), 
+        axis.text.y = element_text(family = 'serif'), 
+        axis.title.x = element_text(family = 'serif'), 
+        axis.title.y = element_text(family = 'serif'), 
+        plot.title = element_text(family = 'serif', hjust = 0.5, face = 'bold'),
+        legend.position = 'bottom', 
+        legend.title = element_text(face = 'bold', family = 'serif'), 
+        legend.text = element_text(family = 'serif')) 
+
+ggsave(plot = gm_tl, filename = './png/maps/totalipm.png', units = 'in', width = 7, height = 10, dpi = 300)
