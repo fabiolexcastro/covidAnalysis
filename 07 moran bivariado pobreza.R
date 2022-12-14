@@ -39,6 +39,7 @@ ggsave(plot = g_hs_tt, filename = 'png/graphs/histogram_totalipm_year.png', unit
 # To make the group by (mpio) ---------------------------------------------
 lipm <- dplyr::select(tble, codigo, Totalipm) %>% distinct()
 lipm
+lipm <- mutate(lipm, Totalipm = as.character(Totalipm))
 gral <- tble %>% 
   group_by(codigo, nombredepartamento, nombremunicipio, year1) %>% 
   dplyr::summarise(count = sum(count)) %>% 
@@ -46,3 +47,7 @@ gral <- tble %>%
 gral <- inner_join(gral, lipm, by = 'codigo')
 gral[which.min(gral$Totalipm),]
 gral[which.max(gral$Totalipm),]
+
+# Join Totalipm with shapefile
+shpf_lipm <- inner_join(shpf, lipm, by = c('MPIO_CCNCT' = 'codigo'))
+
