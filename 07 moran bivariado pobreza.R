@@ -44,6 +44,7 @@ gral <- tble %>%
   group_by(codigo, nombredepartamento, nombremunicipio, year1) %>% 
   dplyr::summarise(count = sum(count)) %>% 
   ungroup()
+gral <- mutate(gral, codigo = as.character(codigo))
 gral <- inner_join(gral, lipm, by = 'codigo')
 gral[which.min(gral$Totalipm),]
 gral[which.max(gral$Totalipm),]
