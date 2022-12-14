@@ -50,4 +50,4 @@ gral[which.max(gral$Totalipm),]
 
 # Join Totalipm with shapefile
 shpf_lipm <- inner_join(shpf, lipm, by = c('MPIO_CCNCT' = 'codigo'))
-
+anti_join(lipm, shpf_lipm, by = c('codigo' = 'MPIO_CCNCT'))
