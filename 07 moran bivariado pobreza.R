@@ -51,7 +51,16 @@ gral <- inner_join(gral, lipm, by = 'codigo')
 gral[which.min(gral$Totalipm),]
 gral[which.max(gral$Totalipm),]
 
+# Solve the problem
+# Antioquia
+shpf <- rbind(shpf %>% filter(DPTO_CNMBR != 'ANTIOQUIA'), 
+              shpf %>% filter(DPTO_CNMBR == 'ANTIOQUIA') %>% mutate(MPIO_CCNCT = gsub('^0', '', MPIO_CCNCT)))
+
+# Atlántico
+shpf <- rbind(shpf %>% filter(DPTO_CNMBR != 'ATLÁNTICO'),
+              shpf %>% filter(DPTO_CNMBR == 'ATLÁNTICO') %>% mutate(MPIO_CCNCT = gsub('^0', '', MPIO_CCNCT)))
+
 # Join Totalipm with shapefile
 shpf_lipm <- inner_join(shpf, lipm, by = c('MPIO_CCNCT' = 'codigo'))
-anti_join(lipm, shpf_lipm, by = c('codigo' = 'MPIO_CCNCT'))
-
+anti_join(lipm, shpf_lipm, by = c('codigo' = 'MPIO_CCNCT')) %>% pull(codigo)
+pull(lipm, codigo)
