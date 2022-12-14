@@ -15,6 +15,8 @@ colnames(tble)
 dplyr::select(tble, Totalipm)
 hist(tble$Totalipm)
 
+shpf <- st_read('SHP/MGN2018_MPIO_POLITICO/MGN_MPIO_POLITICO.shp')
+
 # Histogram ---------------------------------------------------------------
 g_hs_tt <- ggplot(data = tble %>% filter(!is.na(year1)), aes(x = Totalipm)) + 
   geom_histogram(binwidth = 1) + 
