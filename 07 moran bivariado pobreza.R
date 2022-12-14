@@ -35,3 +35,7 @@ g_hs_tt <- ggplot(data = tble %>% filter(!is.na(year1)), aes(x = Totalipm)) +
 
 dir_create('png/graphs')
 ggsave(plot = g_hs_tt, filename = 'png/graphs/histogram_totalipm_year.png', units = 'in', width = 7, height = 5, dpi = 300)
+
+# To make the group by (mpio) ---------------------------------------------
+lipm <- dplyr::select(tble, codigo, Totalipm) %>% distinct()
+lipm
