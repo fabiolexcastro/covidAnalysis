@@ -99,6 +99,11 @@ gm_tl <- ggplot() +
 ggsave(plot = gm_tl, filename = './png/maps/totalipm.png', units = 'in', width = 7, height = 10, dpi = 300)
 
 # To run bimoran ----------------------------------------------------------
+shpf_lipm <- dplyr::select(shpf_lipm, MPIO_CCNCT, MPIO_CNMBR, Totalipm, geometry)
+
+gral_20 <- filter(gral, year1 == 2020)
+gral_21 <- filter(gral, year1 == 2021)
+
 shpf_lipm_20 <- inner_join(shpf_lipm, filter(gral, year1 == 2020)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
 shpf_lipm_21 <- inner_join(shpf_lipm, filter(gral, year1 == 2021)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
 
