@@ -58,6 +58,9 @@ makeCount <- function(shp, year){
   
 }
 
+cntn_20 <- makeCount(shp = sh20, year = 2020)
+cntn_21 <- makeCount(shp = sh21, year = 2021)
+
 
 # Cats
 for(i in 1:10){
