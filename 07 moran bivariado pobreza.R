@@ -46,6 +46,10 @@ lipm <- mutate(lipm, codigo = as.character(codigo))
 lipm[duplicated(lipm$codigo),]
 lipm %>% filter(codigo %in% c(17042, 17541, 68081))
 
+lipm <- lipm[!is.na(lipm$Totalipm),]
+nrow(shpf) - nrow(lipm)
+
+
 gral <- tble %>% 
   group_by(codigo, nombredepartamento, nombremunicipio, year1) %>% 
   dplyr::summarise(count = sum(count)) %>% 
