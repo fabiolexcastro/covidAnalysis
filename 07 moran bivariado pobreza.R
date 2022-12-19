@@ -95,6 +95,9 @@ shpf_lipm_20 <- inner_join(shpf_lipm, filter(gral, year1 == 2020)[,-6], by = c('
 shpf_lipm_21 <- inner_join(shpf_lipm, filter(gral, year1 == 2021)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
 
 # 2020 --------------------------------------------------------------------
+shpf_lipm_20 <- dplyr::select(shpf_lipm_20, MPIO_CCNCT, count, Totalipm)
+shpf_lipm_20 <- drop_na(shpf_lipm_20)
+
 qnwg_20 <- queen_weights(shpf_lipm_20, order = 1)
 morn_20 <- local_bimoran(w = qnwg_20, df = st_drop_geometry(shpf_lipm_20[c('count', 'Totalipm')]))
 lbls_20 <- lisa_labels(morn_20)
