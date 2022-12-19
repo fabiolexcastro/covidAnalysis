@@ -28,3 +28,8 @@ mpio <- st_drop_geometry(mpio) %>% as_tibble()
 sh20 <- inner_join(sh20, mpio, by = 'MPIO_CCNCT')
 sh21 <- inner_join(sh21, mpio, by = 'MPIO_CCNCT')
 
+# Join with zomac and pdet ------------------------------------------------
+zomc <- mutate(zomc, id_espa = as.character(id_espa))
+sh20 <- left_join(sh20, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
+sh21 <- left_join(sh21, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
+
