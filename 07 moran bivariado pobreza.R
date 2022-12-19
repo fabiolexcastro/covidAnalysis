@@ -114,3 +114,4 @@ nrow(shpf_lipm_20)
 table(is.na(shpf_lipm_20$Totalipm))
 table(is.na(shpf_lipm_20$count))
 
+shpf_lipm_20 <- dplyr::select(shpf_lipm_20, MPIO_CCNCT, count, Totalipm)
