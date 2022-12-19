@@ -22,4 +22,9 @@ mpio <- st_read('SHP/MGN2018_MPIO_POLITICO/MGN_MPIO_POLITICO.shp')
 sh20 <- dplyr::select(sh20, MPIO_CCNCT, count, Totalipm, clase, geom)
 sh21 <- dplyr::select(sh20, MPIO_CCNCT, count, Totalipm, clase, geom)
 
+mpio <- dplyr::select(mpio, DPTO_CCDGO, MPIO_CCNCT, DPTO_CNMBR, MPIO_CNMBR)
+mpio <- st_drop_geometry(mpio) %>% as_tibble()
+
+sh20 <- inner_join(sh20, mpio, by = 'MPIO_CCNCT')
+sh21 <- inner_join(sh21, mpio, by = 'MPIO_CCNCT')
 
