@@ -160,3 +160,24 @@ g_mrn_2020 <- ggplot() +
   guides(color=guide_legend(nrow = 2, byrow = TRUE))
 
 ggsave(plot = g_mrn_2020, filename = './png/maps/bimorn_2020_totalipm.png', units = 'in', width = 7, height = 9, dpi = 300)
+
+# 2021 --------------------------------------------------------------------
+shpf_lipm_21 <- inner_join(shpf_lipm, gral_21, by = c('MPIO_CCNCT' = 'codigo'))
+nrow(shpf_lipm_21)
+
+table(is.na(shpf_lipm_21$Totalipm))
+table(is.na(shpf_lipm_21$count))
+
+shpf_lipm_21 <- dplyr::select(shpf_lipm_21, MPIO_CCNCT, count, Totalipm)
+qnwg_21 <- queen_weights(shpf_lipm_21, order = 1)
+morn_21 <- local_bimoran(w = qnwg_21, df = st_drop_geometry(shpf_lipm_21[c('count', 'Totalipm')]))
+lbls_21 <- lisa_labels(morn_21)
+clrs_21 <- setNames(lisa_colors(morn_21), lbls_21)
+
+shpf_lipm_21 <- mutate(shpf_lipm_21, cluster_num = lisa_clusters(morn_21) + 1, cluster = factor(lbls_21[cluster_num], levels = lbls_21))
+shpf_lipm_21 <- inner_join(shpf_lipm_21, lbls, by = c('cluster_num'))
+table(shpf_lipm_21$clase)
+cor(shpf_lipm_21$count, shpf_lipm_21$Totalipm)
+
+
+
