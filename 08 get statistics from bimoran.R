@@ -33,6 +33,7 @@ zomc <- mutate(zomc, id_espa = as.character(id_espa))
 sh20 <- left_join(sh20, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 sh21 <- left_join(sh21, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 
+# Function ----------------------------------------------------------------
 shp <- sh20
 year <- 2020
 
