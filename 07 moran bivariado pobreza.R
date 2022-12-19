@@ -179,5 +179,31 @@ shpf_lipm_21 <- inner_join(shpf_lipm_21, lbls, by = c('cluster_num'))
 table(shpf_lipm_21$clase)
 cor(shpf_lipm_21$count, shpf_lipm_21$Totalipm)
 
+shpf_lipm_21 <- mutate(shpf_lipm_21, clase = factor(clase, levels = lbls$clase))
+shpf_lipm_21$clase
+
+g_mrn_2021 <- ggplot() + 
+  geom_sf(data = shpf_lipm_21, aes(fill = clase, col = clase), lwd = 0.2)+
+  scale_fill_manual(values = mran_clrs, name = 'Clase') +
+  scale_color_manual(values = mran_clrs, guide = 'none') +
+  geom_sf(data = dpts, fill = NA, col = 'grey60', lwd = 0.5) + 
+  geom_sf(data = wrld, fill = NA, col = 'grey60', lwd = 0.2) + 
+  new_scale_fill() + 
+  new_scale_color() +
+  coord_sf(xlim = ext(dpts)[1:2], ylim = ext(dpts)[3:4]) + 
+  ggtitle(label = 'Análisis LISA bivariado entre fallecidos por COVID - 19 (2021)\ne índice de pobreza multidimensional') + 
+  labs(x = 'Lon', y = 'Lat', caption = 'INS - 2021', fill = 'Categoria') +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(family = 'serif'), 
+        axis.text.y = element_text(family = 'serif'), 
+        axis.title.x = element_text(family = 'serif'), 
+        axis.title.y = element_text(family = 'serif'), 
+        plot.title = element_text(family = 'serif', hjust = 0.5, face = 'bold'),
+        legend.position = 'bottom', 
+        legend.title = element_text(face = 'bold', family = 'serif'), 
+        legend.text = element_text(family = 'serif')) +
+  guides(color=guide_legend(nrow = 2, byrow = TRUE))
+
+ggsave(plot = g_mrn_2021, filename = './png/maps/bimorn_2021_totalipm.png', units = 'in', width = 7, height = 9, dpi = 300)
 
 
