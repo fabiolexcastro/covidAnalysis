@@ -42,6 +42,10 @@ ggsave(plot = g_hs_tt, filename = 'png/graphs/histogram_totalipm_year.png', unit
 lipm <- dplyr::select(tble, codigo, Totalipm) %>% distinct()
 lipm
 lipm <- mutate(lipm, codigo = as.character(codigo))
+
+lipm[duplicated(lipm$codigo),]
+lipm %>% filter(codigo %in% c(17042, 17541, 68081))
+
 gral <- tble %>% 
   group_by(codigo, nombredepartamento, nombremunicipio, year1) %>% 
   dplyr::summarise(count = sum(count)) %>% 
