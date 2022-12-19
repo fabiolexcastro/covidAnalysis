@@ -58,3 +58,17 @@ makeCount <- function(shp, year){
   
 }
 
+
+# Cats
+for(i in 1:10){
+  cat(i)
+}
+
+for(i in 1:10){
+  cat(i, '\t')
+}
+
+for(i in 1:10){
+  cat(i, '\n')
+}
+
