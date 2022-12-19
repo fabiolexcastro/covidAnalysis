@@ -128,4 +128,8 @@ table(shpf_lipm_20$clase)
 
 cor(shpf_lipm_20$count, shpf_lipm_20$Totalipm)
 
+# To make the map ---------------------------------------------------------
+shpf_lipm_20 <- mutate(shpf_lipm_20, clase = factor(clase, levels = lbls$clase))
+shpf_lipm_20$clase
+
 
