@@ -14,3 +14,12 @@ sh21 <- st_read('gpkg/bimoran/bimoran_total_count_2021_totalipm.gpkg')
 
 # ZOMAC / PDET
 zomc <- read_csv('tble/zomac_pdet.csv')
+
+# Mpios base
+mpio <- st_read('SHP/MGN2018_MPIO_POLITICO/MGN_MPIO_POLITICO.shp')
+
+# Cleaning the shapefiles -------------------------------------------------
+sh20 <- dplyr::select(sh20, MPIO_CCNCT, count, Totalipm, clase, geom)
+sh21 <- dplyr::select(sh20, MPIO_CCNCT, count, Totalipm, clase, geom)
+
+
