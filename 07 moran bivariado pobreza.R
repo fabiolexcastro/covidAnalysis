@@ -110,3 +110,7 @@ nrow(gral_20)
 
 shpf_lipm_20 <- inner_join(shpf_lipm, gral_20, by = c('MPIO_CCNCT' = 'codigo'))
 nrow(shpf_lipm_20)
+
+table(is.na(shpf_lipm_20$Totalipm))
+table(is.na(shpf_lipm_20$count))
+
