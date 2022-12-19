@@ -132,4 +132,6 @@ cor(shpf_lipm_20$count, shpf_lipm_20$Totalipm)
 shpf_lipm_20 <- mutate(shpf_lipm_20, clase = factor(clase, levels = lbls$clase))
 shpf_lipm_20$clase
 
+mran_clrs <- lbls$color
+names(mran_clrs) <- lbls$clase
 
