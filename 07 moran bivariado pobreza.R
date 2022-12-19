@@ -100,3 +100,4 @@ morn_20 <- local_bimoran(w = qnwg_20, df = st_drop_geometry(shpf_lipm_20[c('coun
 lbls_20 <- lisa_labels(morn_20)
 clrs_20 <- setNames(lisa_colors(morn_20), lbls)
 
+shpf_lipm_20 <- mutate(shpf_lipm_20, cluster_num = lisa_clusters(morn_20) + 1, cluster = factor(lbls_20[cluster_num], levels = lbls_20))
