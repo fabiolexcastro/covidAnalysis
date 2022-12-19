@@ -104,3 +104,15 @@ shpf_lipm_20 <- mutate(shpf_lipm_20, cluster_num = lisa_clusters(morn_20) + 1, c
 lbls <- read_csv('tble/colors_moran.csv')
 shpf_lipm_20 <- inner_join(shpf_lipm_20, lbls, byh = c('cluster_num'))
 table(shpf_lipm_20$clase)
+
+# 2021 --------------------------------------------------------------------
+qnwg_21 <- queen_weights(shpf_lipm_21, order = 1)
+morn_21 <- local_bimoran(w = qnwg_21, df = st_drop_geometry(shpf_lipm_21[c('count', 'Totalipm')]))
+lbls_21 <- lisa_labels(morn_21)
+clrs_21 <- setNames(lisa_colors(morn_21), lbls_21)
+
+shpf_lipm_21 <- mutate(shpf_lipm_21, cluster_num = lisa_clusters(morn_21) + 1, cluster = factor(lbls_21[cluster_num], levels = lbls_21))
+
+lbls <- read_csv('tble/colors_moran.csv')
+shpf_lipm_21 <- inner_join(shpf_lipm_21, lbls, byh = c('cluster_num'))
+table(shpf_lipm_21$clase)
