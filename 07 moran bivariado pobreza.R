@@ -115,3 +115,17 @@ table(is.na(shpf_lipm_20$Totalipm))
 table(is.na(shpf_lipm_20$count))
 
 shpf_lipm_20 <- dplyr::select(shpf_lipm_20, MPIO_CCNCT, count, Totalipm)
+qnwg_20 <- queen_weights(shpf_lipm_20, order = 1)
+morn_20 <- local_bimoran(w = qnwg_20, df = st_drop_geometry(shpf_lipm_20[c('count', 'Totalipm')]))
+lbls_20 <- lisa_labels(morn_20)
+clrs_20 <- setNames(lisa_colors(morn_20), lbls_20)
+
+shpf_lipm_20 <- mutate(shpf_lipm_20, cluster_num = lisa_clusters(morn_20) + 1, cluster = factor(lbls_20[cluster_num], levels = lbls_20))
+
+lbls <- read_csv('tble/colors_moran.csv')
+shpf_lipm_20 <- inner_join(shpf_lipm_20, lbls, byh = c('cluster_num'))
+table(shpf_lipm_20$clase)
+
+cor(shpf_lipm_20$count, shpf_lipm_20$Totalipm)
+
+
