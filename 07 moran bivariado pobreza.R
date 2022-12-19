@@ -206,4 +206,8 @@ g_mrn_2021 <- ggplot() +
 
 ggsave(plot = g_mrn_2021, filename = './png/maps/bimorn_2021_totalipm.png', units = 'in', width = 7, height = 9, dpi = 300)
 
+# To write ----------------------------------------------------------------
+dir_create('gpkg/bimoran')
+st_write(shpf_lipm_20, 'gpkg/bimoran/bimoran_total_count_2020_totalipm.gpkg')
+st_write(shpf_lipm_21, 'gpkg/bimoran/bimoran_total_count_2021_totalipm.gpkg')
 
