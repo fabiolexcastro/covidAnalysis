@@ -33,3 +33,27 @@ zomc <- mutate(zomc, id_espa = as.character(id_espa))
 sh20 <- left_join(sh20, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 sh21 <- left_join(sh21, zomc, by = c('MPIO_CCNCT' = 'id_espa'))
 
+shp <- sh20
+year <- 2020
+
+makeCount <- function(shp, year){
+  
+  cat(year, '\n')
+  freq <- as.data.frame(table(shp$clase))
+  colnames(freq) <- c('categoria', 'cantidad_municipios')
+  freq <- freq %>% arrange(desc(cantidad_municipios))
+  
+  rslt <- shp %>% 
+    filter(!clase %in% c('Sin significancia', 'Aislados')) %>% 
+    st_drop_geometry %>% 
+    dplyr::select(MPIO_CCNCT, DPTO_CNMBR, MPIO_CNMBR, zomac_pdet, count, Totalipm, clase) %>% 
+    as_tibble() %>% 
+    arrange(clase) %>% 
+    mutate(anio = year) %>% 
+    distinct()
+  
+  cat('Done!\n')
+  return(rslt)
+  
+}
+
