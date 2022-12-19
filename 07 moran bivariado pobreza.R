@@ -89,3 +89,7 @@ gm_tl <- ggplot() +
         legend.text = element_text(family = 'serif')) 
 
 ggsave(plot = gm_tl, filename = './png/maps/totalipm.png', units = 'in', width = 7, height = 10, dpi = 300)
+
+# To run bimoran ----------------------------------------------------------
+shpf_lipm_20 <- inner_join(shpf_lipm, filter(gral, year1 == 2020)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
+shpf_lipm_21 <- inner_join(shpf_lipm, filter(gral, year1 == 2021)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
