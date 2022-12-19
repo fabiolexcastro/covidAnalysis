@@ -62,6 +62,12 @@ cntn_20 <- makeCount(shp = sh20, year = 2020)
 cntn_21 <- makeCount(shp = sh21, year = 2021)
 
 
+# To write these tables ---------------------------------------------------
+library(xlsx)
+xlsx::write.xlsx(as.data.frame(cntn_20), file = 'tble/results/countBimoran_totalipm_count.xlsx', sheetName = 'y2020', row.names = FALSE)
+xlsx::write.xlsx(as.data.frame(cntn_21), file = 'tble/results/countBimoran_totalipm_count.xlsx', sheetName = 'y2021', append = TRUE, row.names = FALSE)
+
+
 # Cats
 for(i in 1:10){
   cat(i)
