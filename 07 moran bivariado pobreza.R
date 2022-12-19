@@ -116,3 +116,5 @@ shpf_lipm_21 <- mutate(shpf_lipm_21, cluster_num = lisa_clusters(morn_21) + 1, c
 lbls <- read_csv('tble/colors_moran.csv')
 shpf_lipm_21 <- inner_join(shpf_lipm_21, lbls, byh = c('cluster_num'))
 table(shpf_lipm_21$clase)
+
+cor(shpf_lipm_20$count, shpf_lipm_20$Totalipm)
