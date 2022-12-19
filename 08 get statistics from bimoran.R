@@ -11,3 +11,6 @@ options(scipen = 999, warn = -1)
 # Load data ---------------------------------------------------------------
 sh20 <- st_read('gpkg/bimoran/bimoran_total_count_2020_totalipm.gpkg')
 sh21 <- st_read('gpkg/bimoran/bimoran_total_count_2021_totalipm.gpkg')
+
+# ZOMAC / PDET
+zomc <- read_csv('tble/zomac_pdet.csv')
