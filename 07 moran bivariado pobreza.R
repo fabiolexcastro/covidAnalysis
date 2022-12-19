@@ -104,33 +104,9 @@ shpf_lipm <- dplyr::select(shpf_lipm, MPIO_CCNCT, MPIO_CNMBR, Totalipm, geometry
 gral_20 <- filter(gral, year1 == 2020)
 gral_21 <- filter(gral, year1 == 2021)
 
-shpf_lipm_20 <- inner_join(shpf_lipm, filter(gral, year1 == 2020)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
-shpf_lipm_21 <- inner_join(shpf_lipm, filter(gral, year1 == 2021)[,-6], by = c('MPIO_CCNCT' = 'codigo'))
-
 # 2020 --------------------------------------------------------------------
-shpf_lipm_20 <- dplyr::select(shpf_lipm_20, MPIO_CCNCT, count, Totalipm)
-shpf_lipm_20 <- drop_na(shpf_lipm_20)
+nrow(shpf_lipm)
+nrow(gral_20)
 
-qnwg_20 <- queen_weights(shpf_lipm_20, order = 1)
-morn_20 <- local_bimoran(w = qnwg_20, df = st_drop_geometry(shpf_lipm_20[c('count', 'Totalipm')]))
-lbls_20 <- lisa_labels(morn_20)
-clrs_20 <- setNames(lisa_colors(morn_20), lbls)
-
-shpf_lipm_20 <- mutate(shpf_lipm_20, cluster_num = lisa_clusters(morn_20) + 1, cluster = factor(lbls_20[cluster_num], levels = lbls_20))
-lbls <- read_csv('tble/colors_moran.csv')
-shpf_lipm_20 <- inner_join(shpf_lipm_20, lbls, byh = c('cluster_num'))
-table(shpf_lipm_20$clase)
-
-# 2021 --------------------------------------------------------------------
-qnwg_21 <- queen_weights(shpf_lipm_21, order = 1)
-morn_21 <- local_bimoran(w = qnwg_21, df = st_drop_geometry(shpf_lipm_21[c('count', 'Totalipm')]))
-lbls_21 <- lisa_labels(morn_21)
-clrs_21 <- setNames(lisa_colors(morn_21), lbls_21)
-
-shpf_lipm_21 <- mutate(shpf_lipm_21, cluster_num = lisa_clusters(morn_21) + 1, cluster = factor(lbls_21[cluster_num], levels = lbls_21))
-
-lbls <- read_csv('tble/colors_moran.csv')
-shpf_lipm_21 <- inner_join(shpf_lipm_21, lbls, byh = c('cluster_num'))
-table(shpf_lipm_21$clase)
-
-cor(shpf_lipm_20$count, shpf_lipm_20$Totalipm)
+shpf_lipm_20 <- inner_join(shpf_lipm, gral_20, by = c('MPIO_CCNCT' = 'codigo'))
+nrow(shpf_lipm_20)
