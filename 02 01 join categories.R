@@ -25,3 +25,8 @@ rate <- read_excel('datos/tbl/TASA MORTALIDAD MUNICIPIO.xlsx', sheet = 'Hoja2')
 View(rate)
 rate <- mutate(rate, divi = as.numeric(DIVIPOLA), rate = as.numeric(TASAMORTALIDAD))
 rate[!complete.cases(rate),]
+rate <- dplyr::select(rate, -NOMBREMPIO)
+rate <- drop_na(rate)
+write.csv(rate, 'datos/tbl/rate.csv', row.names = FALSE)
+
+
